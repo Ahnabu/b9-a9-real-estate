@@ -6,6 +6,7 @@ import UserProfile from "../../Pages/Profile/UserProfile/UserProfile";
 import Error from "../../Error/Error";
 import LogIn from "../../Pages/ManageUser/LogIn/LogIn";
 import Register from "../../Pages/ManageUser/Register/Register";
+import Card from "../../Components/Cards/Card";
 
 export const router = createBrowserRouter([
     {
@@ -15,7 +16,13 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element:<Slider></Slider>,
+                element: <Slider></Slider>,
+                loader: () => fetch('../data.json')
+            },
+            {
+                path: "/",
+                element: <Card></Card>,
+                
             },
             {
                 path: "/update-profile",
@@ -33,6 +40,7 @@ export const router = createBrowserRouter([
                 path: "/register",
                 element: <Register></Register>,
             },
+          
         ]
     },
 ]);

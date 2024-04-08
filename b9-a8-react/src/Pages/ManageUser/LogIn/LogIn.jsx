@@ -2,8 +2,7 @@
 
 import {
     Card,
-    Input,
-    Checkbox,
+    Input,    
     Button,
     Typography,
 } from "@material-tailwind/react";

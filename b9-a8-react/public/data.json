@@ -1,0 +1,148 @@
+{
+    "data": [
+        {
+            "image": "https://i.ibb.co/LNsZYKL/435123131-957136245953938-8313579374460895802-n.png",
+            "estate_title": "Luxury Villa",
+            "id": "001",
+            "segment_name": "Single-family homes",
+            "description": "A luxurious villa with stunning views",
+            "price": "$1,500,000",
+            "status": "sale",
+            "area": "5000 sq ft",
+            "location": "Los Angeles, CA",
+            "facilities": [
+                "living room",
+                "swimming pool",
+                "kitchen"
+            ]
+        },
+        {
+            "image": "https://i.ibb.co/xg23hgV/434588543-952964312684487-4123971753150353345-n.png",
+            "estate_title": "Modern Apartment",
+            "id": "002",
+            "segment_name": "Apartments",
+            "description": "Contemporary apartment in a prime location",
+            "price": "$2,500/month",
+            "status": "rent",
+            "area": "1000 sq ft",
+            "location": "New York City, NY",
+            "facilities": [
+                "living room",
+                "gym",
+                "balcony"
+            ]
+        },
+        {
+            "image": "https://i.ibb.co/7g2Xs4J/400812139-883378230251213-8993397747539996528-n.png",
+            "estate_title": "Townhouse Retreat",
+            "id": "003",
+            "segment_name": "Townhouses",
+            "description": "Charming townhouse with a cozy atmosphere",
+            "price": "$800,000",
+            "status": "sale",
+            "area": "2000 sq ft",
+            "location": "Chicago, IL",
+            "facilities": [
+                "living room",
+                "garage",
+                "patio"
+            ]
+        },
+        {
+            "image": "https://i.ibb.co/Rj4xh4R/433861014-404833092482985-8452375828009476079-n.png",
+            "estate_title": "Student Housing Complex",
+            "id": "004",
+            "segment_name": "Student housing",
+            "description": "Convenient and comfortable housing for students",
+            "price": "$600/month",
+            "status": "rent",
+            "area": "800 sq ft",
+            "location": "Boston, MA",
+            "facilities": [
+                "bedroom",
+                "study area",
+                "laundry room"
+            ]
+        },
+        {
+            "image": "https://i.ibb.co/s1WM5V2/433665349-416395344457775-2760803485086630833-n.png",
+            "estate_title": "Senior Living Community",
+            "id": "005",
+            "segment_name": "Senior living communities",
+            "description": "A vibrant community for seniors with various amenities",
+            "price": "$400,000",
+            "status": "sale",
+            "area": "1500 sq ft",
+            "location": "Phoenix, AZ",
+            "facilities": [
+                "community center",
+                "garden",
+                "fitness center"
+            ]
+        },
+        {
+            "image": "https://i.ibb.co/fMQfCh3/435066390-1491787778411941-9022711050693438483-n.png",
+            "estate_title": "Beachfront Vacation Rental",
+            "id": "006",
+            "segment_name": "Vacation rentals",
+            "description": "Relaxing beachfront rental for the perfect getaway",
+            "price": "$300/night",
+            "status": "rent",
+            "area": "1200 sq ft",
+            "location": "Miami Beach, FL",
+            "facilities": [
+                "ocean view",
+                "private beach access",
+                "terrace"
+            ]
+        },
+        {
+            "image": "https://i.ibb.co/j5D6KZZ/434561188-447464671117931-4175622643289481365-n.png",
+            "estate_title": "Cosy Cottage",
+            "id": "007",
+            "segment_name": "Single-family homes",
+            "description": "Charming cottage nestled in the countryside",
+            "price": "$350,000",
+            "status": "sale",
+            "area": "1800 sq ft",
+            "location": "Seattle, WA",
+            "facilities": [
+                "fireplace",
+                "garden",
+                "porch"
+            ]
+        },
+        {
+            "image": "https://i.ibb.co/F4zytFs/434525147-768406965248426-3907028757762818572-n.png",
+            "estate_title": "Downtown Loft",
+            "id": "008",
+            "segment_name": "Apartments",
+            "description": "Modern loft with urban vibes in the heart of the city",
+            "price": "$900,000",
+            "status": "sale",
+            "area": "2000 sq ft",
+            "location": "San Francisco, CA",
+            "facilities": [
+                "open floor plan",
+                "city view",
+                "fitness center"
+            ]
+        },
+        {
+            "image": "https://i.ibb.co/sJ7K7SG/434532562-987281362944101-3892278133360426503-n.png",
+            "estate_title": "Lakefront Retreat",
+            "id": "009",
+            "segment_name": "Single-family homes",
+            "description": "Tranquil retreat overlooking a serene lake",
+            "price": "$1,200,000",
+            "status": "sale",
+            "area": "3500 sq ft",
+            "location": "Lake Tahoe, CA",
+            "facilities": [
+                "dock",
+                "deck",
+                "fire pit"
+            ]
+        }
+    ]
+}
