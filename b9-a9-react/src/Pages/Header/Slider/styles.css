@@ -17,16 +17,16 @@ body {
     padding: 0;
 }
 
-.swiper {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+
+    
+    
 
 .swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
+    background-size: cover;
+        background-repeat: no-repeat;
     
     /* Center slide text vertically */
     display: flex;

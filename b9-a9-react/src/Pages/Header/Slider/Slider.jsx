@@ -11,8 +11,8 @@ import './styles.css';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import Card from '../../../Components/Cards/Card';
-import { useLoaderData } from "react-router-dom"
+import Cards from '../../../Components/Cards/Cards';
+// import { useLoaderData } from "react-router-dom"
  function Slider() {
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
@@ -20,14 +20,15 @@ import { useLoaderData } from "react-router-dom"
         progressCircle.current.style.setProperty('--progress', 1 - progress);
         progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
      };
-    
+    //  const data = useLoaderData();
+    //  const card = data.data
     return (
         <>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{
-                    delay: 5000,
+                    delay: 4000,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -36,11 +37,13 @@ import { useLoaderData } from "react-router-dom"
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
                 onAutoplayTimeLeft={onAutoplayTimeLeft}
-                className="mySwiper mt-2 rounded-3xl lg:h-[500px] "
+                className="mySwiper  mt-2 rounded-3xl h-[300px] w-[370px] md:h-[500px] md:w-[720px] lg:h-[600px] lg:w-[1180px] mx-auto "
             >
+             
+                
                 <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/LNsZYKL/435123131-957136245953938-8313579374460895802-n.png)` }}>Slide 2</SwiperSlide>
                 <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/xg23hgV/434588543-952964312684487-4123971753150353345-n.png)` }}>Slide 2</SwiperSlide>
-                <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/7g2Xs4J/400812139-883378230251213-8993397747539996528-n.png)` }}>Slide 2</SwiperSlide>
+                <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/7g2Xs4J/400812139-883378230251213-8993397747539996528-n.png)` }}className=''>Slide 2</SwiperSlide>
                 <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/Rj4xh4R/433861014-404833092482985-8452375828009476079-n.png)` }}>Slide 2</SwiperSlide>
                 <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/s1WM5V2/433665349-416395344457775-2760803485086630833-n.png)` }}>Slide 2</SwiperSlide>
                 <SwiperSlide style={{ backgroundImage: `url(https://i.ibb.co/fMQfCh3/435066390-1491787778411941-9022711050693438483-n.png)` }}>Slide 2</SwiperSlide>
@@ -54,7 +57,7 @@ import { useLoaderData } from "react-router-dom"
                     <span ref={progressContent}></span>
                 </div>
             </Swiper>
-            <Card></Card>
+            <Cards></Cards>
         </>
     );
 }

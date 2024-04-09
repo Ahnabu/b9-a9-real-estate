@@ -6,7 +6,8 @@ import UserProfile from "../../Pages/Profile/UserProfile/UserProfile";
 import Error from "../../Error/Error";
 import LogIn from "../../Pages/ManageUser/LogIn/LogIn";
 import Register from "../../Pages/ManageUser/Register/Register";
-import Card from "../../Components/Cards/Card";
+import Cards from "../../Components/Cards/Cards";
+import CardDetails from "../../Components/Cards/Card/CardDetails/CardDetails";
 
 export const router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/",
-                element: <Card></Card>,
+                element: <Cards></Cards>,
                 
             },
             {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register></Register>,
+            },
+            {
+                path: "/card-details/:id",
+                element: <CardDetails></CardDetails>,
             },
           
         ]
