@@ -6,11 +6,11 @@ import {
 } from "@material-tailwind/react";
 import { FaMapSigns } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
-
+import { Helmet } from "react-helmet";
 import { NavLink } from "react-router-dom";
 const SingleCard = ({ card }) => {
     const { location, area, status, price, description, segment_name, estate_title, image, id } = card;
-    console.log(card);
+    
     const isEven = (id) => {
         
             return id % 2 == 0
@@ -22,10 +22,13 @@ const SingleCard = ({ card }) => {
     return (
         
            
-            <section className="p-4 lg:p-8 dark:bg-gray-100 dark:text-gray-800">
+        <section className="p-4 lg:p-8 dark:bg-gray-100 dark:text-gray-800">
+            <Helmet>
+               <title>Dwell-well || Cards</title> 
+            </Helmet>
                 <div className="container mx-auto space-y-12">
                 <div className={`flex flex-col overflow-hidden rounded-md shadow-sm  ${isEven(id) ? 'lg:flex-row-reverse': 'lg:flex-row'}`}>
-                    <img src={image} alt="" className="h-80 dark:bg-gray-500 aspect-video group relative overflow-hidden hover:transition duration-300 ease-in-out hover:scale-110 lg:w-1/2" />
+                    <img src={image} alt="" className="h-80 dark:bg-gray-500 aspect-video group relative overflow-hidden hover:transition duration-300 ease-in-out hover:scale-105 lg:w-1/2" />
                         <div className="flex flex-col justify-center flex-1 p-6 dark:bg-gray-50">
                             <span className="text-xs uppercase dark:text-gray-600"></span>
                         <h3 className="text-3xl font-bold flex"><FaMapSigns className="mr-1 mt-1" /> {estate_title}</h3>

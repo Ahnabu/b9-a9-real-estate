@@ -8,10 +8,30 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/Provider";
+
+
 
 function Register() {
+    const { EmailSignIn } = useContext(AuthContext)
+    const signIn = (e) => {
+        e.preventDefault();
+        
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        EmailSignIn(email, password)
+            .then(result => { console.log(result) })
+            .catch(error => console.error(error));
+ }
+
+
     return (
         <div className="w-full mx-auto mt-6 ">
+            <Helmet>
+                <title>Dwell-well || Register</title>
+            </Helmet>
             <Card color="transparent" className="mx-auto lg:w-[440px] p-8 bg-gray-100" shadow={true}>
                 <Typography variant="h4" color="blue-gray">
                     Sign Up
@@ -19,14 +39,26 @@ function Register() {
                 <Typography color="gray" className="mt-1 font-normal">
                     Nice to meet you! Enter your details to register.
                 </Typography>
-                <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+                <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={() => { signIn() }}>
                     <div className="mb-1 flex flex-col gap-6">
                         <Typography variant="h6" color="blue-gray" className="-mb-3">
                             Your Name
                         </Typography>
                         <Input
                             size="lg"
-                            placeholder="name@mail.com"
+                            placeholder="name"
+                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                            labelProps={{
+                                className: "before:content-none after:content-none",
+                            }}
+                            
+                        />
+                        <Typography variant="h6" color="blue-gray" className="-mb-3">
+                            Your PhotoURL
+                        </Typography>
+                        <Input
+                            size="lg"
+                            placeholder="your image url"
                             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                             labelProps={{
                                 className: "before:content-none after:content-none",
@@ -42,6 +74,7 @@ function Register() {
                             labelProps={{
                                 className: "before:content-none after:content-none",
                             }}
+                            name="email"
                         />
                         <Typography variant="h6" color="blue-gray" className="-mb-3">
                             Password
@@ -54,6 +87,7 @@ function Register() {
                             labelProps={{
                                 className: "before:content-none after:content-none",
                             }}
+                            name="password"
                         />
                     </div>
                     <Checkbox
@@ -74,7 +108,7 @@ function Register() {
                         }
                         containerProps={{ className: "-ml-2.5" }}
                     />
-                    <Button className="mt-6" fullWidth>
+                    <Button className="mt-6" fullWidth type="submit">
                         Sign Up
                     </Button>
                     <Typography color="gray" className="mt-4 text-center font-normal">
