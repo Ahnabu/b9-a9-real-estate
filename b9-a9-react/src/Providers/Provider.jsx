@@ -22,32 +22,32 @@ const Provider = ({ children }) => {
     //             setLoading(false);
     //         })
     // },[])
-    const EmailSingIn = (email,password) => {
+    const emailSingIn = (email,password) => {
         return createUserWithEmailAndPassword( auth,email,password)
     }
     const provider = new GoogleAuthProvider();
-    const GoogleSingIn = () => {
+    const googleSingIn = () => {
         return signInWithPopup( auth,provider)
     }
 
     const gitProvider = new GithubAuthProvider();
 
-    const GitHubSingIn = () => {
+    const githubSingIn = () => {
         return signInWithPopup(auth, gitProvider)
     }
-    const User = signInMethod => {
+    const userMethod = signInMethod => {
         signInMethod()
             .then(result => setUser(result.user))
         .catch(error=>console.log(error))
     }
-
+console.log(user);
     const info = {
         user,
    
-        EmailSingIn,
-        GoogleSingIn,
-        GitHubSingIn,
-        User
+        emailSingIn,
+        googleSingIn,
+        githubSingIn,
+        userMethod
 
     }
     
