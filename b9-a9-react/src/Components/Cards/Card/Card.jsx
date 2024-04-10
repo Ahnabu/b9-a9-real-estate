@@ -9,7 +9,8 @@ import { IoLocationOutline } from "react-icons/io5";
 
 import { NavLink } from "react-router-dom";
 const SingleCard = ({ card }) => {
-    const { location, area, status, price, description, segment_name, estate_title, image, id } = card
+    const { location, area, status, price, description, segment_name, estate_title, image, id } = card;
+    console.log(card);
     const isEven = (id) => {
         
             return id % 2 == 0

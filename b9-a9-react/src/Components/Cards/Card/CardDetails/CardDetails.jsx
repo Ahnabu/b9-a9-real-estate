@@ -17,24 +17,42 @@ const CardDetails = () => {
         
     }, [id])
     
-    const {  location, area, status, price, description, segment_name, estate_title, image } = singleCard
+    const { location, area, price, full_description, segment_name, estate_title, image, } = singleCard;
+   
     return (
         <div>
             <div className="p-5 mx-auto sm:p-10 md:p-16  dark:text-gray-800">
-                <div className="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
-                    <img src={image} alt="" className="w-full h-60 sm:h-96 dark:bg-gray-500" />
-                    <div className="p-6 pb-12 m-4 mx-auto -mt-16 space-y-6 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md dark:bg-gray-50">
-                        <div className="space-y-2">
-                            <h1 rel="noopener noreferrer" href="#" className="inline-block text-2xl font-semibold sm:text-3xl text-white text-center">{estate_title} </h1>
-                            <p className="text-xs dark:text-gray-600">By
-                                <a rel="noopener noreferrer" href="#" className="text-xs hover:underline">Leroy Jenkins</a>
+              
+                <div className="flex flex-col max-w-[100vw] h-[80vh] mx-auto overflow-hidden rounded bg-no-repeat bg-cover" style={{backgroundImage :`url(${image})`}} >
+                  
+                    
+                    <div className="p-6 pb-6 m-4 space-y-6 lg:w-[70vw]sm:px-10 sm:mx-12 lg:rounded-md  bg-[#ffffffcc] bg-blur bg-shadow-lg mx-auto text-center relative top-96">
+                        <h1 rel="noopener noreferrer" href="#" className="inline-block text-2xl font-semibold sm:text-3xl text-gray-800 text-center mx-auto">{estate_title} </h1>
+                        <div className=" flex justify-around w-[70vw] mx-auto ">
+                           
+                            <p className="text-xl dark:text-gray-600 mt-2">
+                              Price:{price}
                             </p>
+                            
+                            <p className="text-xl dark:text-gray-600">
+                              Area: {area}
+                            </p>
+                            <p className="text-xl dark:text-gray-600">
+                              Location :{location}
+                            </p>
+                            <p className="text-xl dark:text-gray-600">
+                              Segment Name:{segment_name}
+                            </p>
+                           
                         </div>
-                        <div className="dark:text-gray-800">
-                            <p>Insert the actual text content here...</p>
-                        </div>
+                       
                     </div>
                 </div>
+                
+            </div>
+            <div className="text-center">
+                <h1>All you need to know</h1>
+                {full_description}
             </div>
         </div>
     );
