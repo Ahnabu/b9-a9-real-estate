@@ -8,6 +8,7 @@ import LogIn from "../../Pages/ManageUser/LogIn/LogIn";
 import Register from "../../Pages/ManageUser/Register/Register";
 import Cards from "../../Components/Cards/Cards";
 import CardDetails from "../../Components/Cards/Card/CardDetails/CardDetails";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 export const router = createBrowserRouter([
     {
@@ -27,11 +28,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/update-profile",
-                element: <UpdateProfile></UpdateProfile>,
+                element:<PrivetRoute>
+                    <UpdateProfile></UpdateProfile>
+                </PrivetRoute>
+                    ,
             },
             {
                 path: "/user-profile",
-                element:<UserProfile></UserProfile>,
+                element:<PrivetRoute>
+                    <UserProfile></UserProfile>
+                </PrivetRoute>
+                    ,
             },
             {
                 path: "/login",
@@ -43,7 +50,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/card-details/:id",
-                element: <CardDetails></CardDetails>,
+                element:<PrivetRoute>
+                    <CardDetails></CardDetails>
+                </PrivetRoute> ,
             },
           
         ]

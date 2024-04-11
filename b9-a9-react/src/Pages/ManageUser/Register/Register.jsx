@@ -22,8 +22,10 @@ function Register() {
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
         const name = form.get('name');
+        const photoURL = form.get('photoURL');
         const password = form.get('password');
-        console.log(email, password, name);
+        console.log(email, password, name, photoURL);
+        
         emailSingIn(email, password)
             .then(result => console.log(result.user))
             .catch(error => console.error(error))
@@ -36,6 +38,7 @@ function Register() {
         userMethod(githubSingIn)
         console.log('github');
     }
+
 
     return (
         <div className="w-full mx-auto mt-6 ">
@@ -61,7 +64,7 @@ function Register() {
                             labelProps={{
                                 className: "before:content-none after:content-none",
                             }}
-                            
+                            name="name"
                         />
                         <Typography variant="h6" color="blue-gray" className="-mb-3">
                             Your PhotoURL
@@ -73,6 +76,7 @@ function Register() {
                             labelProps={{
                                 className: "before:content-none after:content-none",
                             }}
+                            name="photoURL"
                         />
                         <Typography variant="h6" color="blue-gray" className="-mb-3">
                             Your Email

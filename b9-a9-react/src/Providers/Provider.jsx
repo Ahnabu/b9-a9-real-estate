@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { useLocation,useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext(null)
 
@@ -35,9 +35,22 @@ const Provider = ({ children }) => {
     const githubSingIn = () => {
         return signInWithPopup(auth, gitProvider)
     }
+    const navigate = useNavigate();
+    const location = useLocation()
     const userMethod = signInMethod => {
         signInMethod()
-            .then(result => setUser(result.user))
+            .then(result => {
+                setUser(result.user);
+                if (result.user) {
+                    navigate(location?.state || "/")
+                }
+            
+            })
+        .catch(error=>console.log(error))
+    }
+    const LogOut = () => {
+        signOut(auth)
+            .then(setUser(null))
         .catch(error=>console.log(error))
     }
 console.log(user);
@@ -47,7 +60,8 @@ console.log(user);
         emailSingIn,
         googleSingIn,
         githubSingIn,
-        userMethod
+        userMethod,
+        LogOut,
 
     }
     
