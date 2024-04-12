@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 
 export const AuthContext = createContext(null)
@@ -13,16 +13,7 @@ const Provider = ({ children }) => {
    
     const [user, setUser] = useState(null);
     // const [loading, setLoading] = useState(true);
-    // const [data, setData] = useState(null);
-    // useEffect(() => {
-    //     fetch('../data.json')
-    //        .then(res => res.json())
-    //        .then(data => {
-                
-    //             setData(data);
-    //             setLoading(false);
-    //         })
-    // },[])
+  
     const EmailSingIn =(email, password) => {
       
      
@@ -52,6 +43,12 @@ const Provider = ({ children }) => {
             return console.log(error);
         }
     }
+    const ProfileUpdate = (name, photoURL) => {
+        return updateProfile(auth.currentUser, {
+            displayName: `${name}`, photoURL: `${photoURL}`
+        }).then(result=>console.log(result))
+            .catch((error)=>{console.log(error)} );
+    }
     const LogOut = () => {
         signOut(auth)
             .then(setUser(null))
@@ -78,6 +75,8 @@ console.log(user);
         LogOut,
      
         LogInEmail,
+        ProfileUpdate,
+
     }
     
     return (
