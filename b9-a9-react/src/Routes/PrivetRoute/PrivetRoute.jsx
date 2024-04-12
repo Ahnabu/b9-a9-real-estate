@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/Provider";
 import { useLocation, Navigate } from 'react-router-dom';
@@ -5,9 +6,10 @@ import { useLocation, Navigate } from 'react-router-dom';
 const PrivetRoute = ({ children }) => {
     const { user } = useContext(AuthContext)
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
     if (!user) {
-        <Navigate to={'/login'} state={location?.pathname || '/'}></Navigate>
+        return <Navigate to={'/login'} state={location?.pathname || '/'}></Navigate>
+      
         
     }
     return (

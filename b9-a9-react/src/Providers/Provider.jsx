@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import { useLocation,useNavigate } from 'react-router-dom';
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+
 
 export const AuthContext = createContext(null)
 
@@ -10,6 +10,7 @@ export const AuthContext = createContext(null)
 
 
 const Provider = ({ children }) => {
+   
     const [user, setUser] = useState(null);
     // const [loading, setLoading] = useState(true);
     // const [data, setData] = useState(null);
@@ -22,8 +23,13 @@ const Provider = ({ children }) => {
     //             setLoading(false);
     //         })
     // },[])
-    const emailSingIn = (email,password) => {
-        return createUserWithEmailAndPassword( auth,email,password)
+    const EmailSingIn =(email, password) => {
+      
+     
+            return createUserWithEmailAndPassword(auth, email, password);
+           
+           
+        
     }
     const provider = new GoogleAuthProvider();
     const googleSingIn = () => {
@@ -35,34 +41,43 @@ const Provider = ({ children }) => {
     const githubSingIn = () => {
         return signInWithPopup(auth, gitProvider)
     }
-    const navigate = useNavigate();
-    const location = useLocation()
-    const userMethod = signInMethod => {
-        signInMethod()
-            .then(result => {
-                setUser(result.user);
-                if (result.user) {
-                    navigate(location?.state || "/")
-                }
-            
-            })
-        .catch(error=>console.log(error))
+
+   
+  
+    const LogInEmail = async (email, password) => {
+        try {
+            const result = await signInWithEmailAndPassword(email, password);
+            setUser(result.user);
+        } catch (error) {
+            return console.log(error);
+        }
     }
     const LogOut = () => {
         signOut(auth)
             .then(setUser(null))
         .catch(error=>console.log(error))
     }
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            console.log('on auth state changed', currentUser);
+            setUser(currentUser)
+
+        })
+        return () => {
+            unSubscribe()
+        }
+    })
 console.log(user);
     const info = {
         user,
    
-        emailSingIn,
+        EmailSingIn,
         googleSingIn,
         githubSingIn,
-        userMethod,
+        
         LogOut,
-
+     
+        LogInEmail,
     }
     
     return (
