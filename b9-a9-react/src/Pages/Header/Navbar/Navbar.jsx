@@ -9,10 +9,11 @@ import {
 } from "@material-tailwind/react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Providers/Provider";
+import UserProfile from "../../../Components/UserProfile/UserProfile";
 
 export function StickyNavbar() {
     const [openNav, setOpenNav] = React.useState(false);
-    const {user,LogOut} = useContext(AuthContext)
+    const {user} = useContext(AuthContext)
     React.useEffect(() => {
         window.addEventListener(
             "resize",
@@ -85,7 +86,7 @@ export function StickyNavbar() {
                     </Typography>
                     <div className="flex items-center gap-4">
                         <div className="mr-4 hidden lg:block text-black">{navList}</div>
-                        {user ? <Button onClick={LogOut}>Log Out</Button> : <div className="flex items-center gap-x-1">
+                        {user ? <UserProfile></UserProfile> : <div className="flex items-center gap-x-1">
 
                             <Link to={'/login'}>
                                 <Button
