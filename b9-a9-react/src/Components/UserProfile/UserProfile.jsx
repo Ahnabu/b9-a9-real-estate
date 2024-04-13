@@ -1,5 +1,5 @@
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/Provider";
 import React from "react";
 import {
@@ -14,15 +14,29 @@ import { Link } from "react-router-dom";
 const UserProfile = () => {
     const { LogOut,user } = useContext(AuthContext);
     const [open, setOpen] = React.useState(false);
+    const [hoverText, setHoverText] = useState('');
 
+    const handleMouseOver = (text) => {
+        setHoverText(text);
+    };
+
+    const handleMouseLeave = () => {
+        setHoverText('');
+    };
     const openDrawer = () => setOpen(true);
     const closeDrawer = () => setOpen(false);
     return (
         <div>
             <React.Fragment>
-                <Button onClick={openDrawer} className="w-12 h-12 rounded-full  dark:bg-gray-500 p-1" >
-                    {user?.photoURL ? <div className="w-12 h-12 rounded-full bg-cover -mt-[5px] -ml-[5px] " style={{ backgroundImage: `url(${user.photoURL})` }} ></div> : <FaCircleUser className="text-5xl -mt-[5.5px] -ml-[5px]" />}
-                </Button>
+                <div>
+                <Button onClick={openDrawer} className="w-12 h-12 rounded-full  dark:bg-gray-500 p-1" onMouseOver={() => handleMouseOver(`${user.displayName}`)} onMouseLeave={handleMouseLeave}>
+                    
+                    {user?.photoURL ?  <div className="w-12 h-12 rounded-full bg-cover -mt-[5px] -ml-[5px] " style={{ backgroundImage: `url(${user.photoURL})` }} ></div> : <FaCircleUser className="text-5xl -mt-[5.5px] -ml-[5px]" />}
+                    
+                    </Button>
+                    {hoverText && <span style={{ position: 'absolute', backgroundColor: 'lightgray', padding: '5px' }}>{hoverText}</span>}
+                    <Button onClick={LogOut} className="ml-4">Log Out</Button>
+                </div>
                 <Drawer open={open} onClose={closeDrawer} className="p-4 bg-white ">
                     <div className="h-full p-3 space-y-2 w-60 bg-white dark:text-gray-800  ">
                         <div className="flex items-center p-2 space-x-4">

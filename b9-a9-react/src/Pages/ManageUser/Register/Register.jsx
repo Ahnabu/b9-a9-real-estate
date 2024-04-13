@@ -14,13 +14,13 @@ import { AuthContext } from "../../../Providers/Provider";
 import Methods from "../../../Providers/Methods/Methods";
 
 import { useLocation, useNavigate } from 'react-router-dom';
-import { validatePassword } from "firebase/auth";
+
 
 function Register() {
     const { EmailSingIn, ProfileUpdate } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-const [error,setError]= useState(null)
+    const[error,setError]= useState('')
 console.log(location);
     const handleRegistration = e => {
         e.preventDefault();
@@ -31,38 +31,31 @@ console.log(location);
         const photoURL = form.get('photoURL');
         const password = form.get('password');
         console.log(email, password, name, photoURL);
-        function validatePassword(password) {
-            // Minimum password length
-            const MIN_LENGTH = 6;
+        const MIN_LENGTH = 6;
 
-            // Error messages
-            const ERR_LENGTH = "Password must be at least 6 characters long.";
-            const ERR_LOWERCASE = "Password must contain at least one lowercase letter.";
-            const ERR_UPPERCASE = "Password must contain at least one uppercase letter.";
+        // Error messages
+        const ERR_LENGTH = "Password must be at least 6 characters long.";
+        const ERR_LOWERCASE = "Password must contain at least one lowercase letter.";
+        const ERR_UPPERCASE = "Password must contain at least one uppercase letter.";
 
-            // Check password length
-            if (password.length < MIN_LENGTH) {
-                setError(ERR_LENGTH);
-                return false;
-            }
-
-            // Check for lowercase letter
-            if (!/[a-z]/.test(password)) {
-                setError(ERR_LOWERCASE);
-                return false;
-            }
-
-            // Check for uppercase letter
-            if (!/[A-Z]/.test(password)) {
-                setError(ERR_UPPERCASE);
-                return false;
-            }
-
-            // All validations passed
-            return true;
+        // Check password length
+        if (password.length < MIN_LENGTH) {
+            setError(ERR_LENGTH);
+            return false;
         }
-        validatePassword(password) 
 
+        // Check for lowercase letter
+        if (!/[a-z]/.test(password)) {
+            setError(ERR_LOWERCASE);
+            return false;
+        }
+
+        // Check for uppercase letter
+        if (!/[A-Z]/.test(password)) {
+            setError(ERR_UPPERCASE);
+            return false;
+        }
+        setError('')
         EmailSingIn(email, password, name, photoURL)
             
             
@@ -141,8 +134,9 @@ console.log(location);
                                 className: "before:content-none after:content-none",
                             }}
                             name="password"
+                           
                         />
-                        {validatePassword || <div>{error} </div> }
+                        {error && <p style={{ color: 'red' }}>{error}</p>}
                     </div>
                     <Checkbox
                         label={
