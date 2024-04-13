@@ -7,12 +7,14 @@ import {
     Button,
     Typography,
 } from "@material-tailwind/react";
+
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Providers/Provider";
 import Methods from "../../../Providers/Methods/Methods";
-
+import { FaEyeSlash } from "react-icons/fa6";
+import { FaEye } from "react-icons/fa";
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
@@ -21,7 +23,8 @@ function Register() {
     const navigate = useNavigate();
     const location = useLocation();
     const[error,setError]= useState('')
-console.log(location);
+    const [see, setSee] = useState(false);
+   
     const handleRegistration = e => {
         e.preventDefault();
 
@@ -77,7 +80,7 @@ console.log(location);
             <Helmet>
                 <title>Dwell-well || Register</title>
             </Helmet>
-            <Card color="transparent" className="mx-auto lg:w-[440px] p-8 bg-gray-100" shadow={true}>
+            <Card color="transparent" className="mx-auto w-80 md:w-[440px] sm:p-6  md:p-8 bg-gray-100" >
                 <Typography variant="h4" color="blue-gray">
                     Sign Up
                 </Typography>
@@ -121,21 +124,30 @@ console.log(location);
                                 className: "before:content-none after:content-none",
                             }}
                             name="email"
+                            required
                         />
                         <Typography variant="h6" color="blue-gray" className="-mb-3">
                             Password
                         </Typography>
-                        <Input
-                            type="password"
-                            size="lg"
-                            placeholder="********"
-                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                            labelProps={{
-                                className: "before:content-none after:content-none",
-                            }}
-                            name="password"
-                           
-                        />
+                        <div className="flex md:flex-col">
+                            <Input
+                                type={`${see ? 'text' : 'password'}`}
+                                size="lg"
+                                placeholder="********"
+                                className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                                labelProps={{
+                                    className: "before:content-none after:content-none",
+                                }}
+                                name="password"
+                                required
+                            >
+
+                            </Input>
+                            <span onClick={() => { setSee(!see) }} className={' relative top-3 md:-top-7 right-6 md:-right-[350px]'}>
+                                {see ? <FaEyeSlash /> : <FaEye />}
+                            </span>
+                        </div>
+                        
                         {error && <p style={{ color: 'red' }}>{error}</p>}
                     </div>
                     <Checkbox

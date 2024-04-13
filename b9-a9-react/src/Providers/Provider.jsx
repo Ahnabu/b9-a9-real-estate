@@ -15,13 +15,8 @@ const Provider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const EmailSingIn = (email, password) => {
-        
-      
         setLoading(true);
             return createUserWithEmailAndPassword(auth, email, password);
-           
-           
-        
     }
     const provider = new GoogleAuthProvider();
     const googleSingIn = () => {
@@ -35,8 +30,6 @@ const Provider = ({ children }) => {
         setLoading(true);
         return signInWithPopup(auth, gitProvider)
     }
-
-   
   
     const LogInEmail = async (email, password) => {
         try {
@@ -70,7 +63,8 @@ const Provider = ({ children }) => {
         return () => {
             unSubscribe()
         }
-    },[])
+    }, []);
+    
 
     const info = {
         user,
@@ -78,9 +72,7 @@ const Provider = ({ children }) => {
         EmailSingIn,
         googleSingIn,
         githubSingIn,
-        
         LogOut,
-     
         LogInEmail,
         ProfileUpdate,
         loading

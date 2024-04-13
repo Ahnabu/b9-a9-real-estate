@@ -4,16 +4,18 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Typography, Button, } from "@material-tailwind/react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../Providers/Provider";
 import Methods from "../../../Providers/Methods/Methods";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FaEyeSlash } from "react-icons/fa6";
+import { FaEye } from "react-icons/fa";
 function LogIn() {
  
     const { LogInEmail } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-
+    const [see, setSee] = useState(false);
 
     const handleLogIn = e => {
         e.preventDefault();
@@ -50,9 +52,12 @@ function LogIn() {
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block dark:text-gray-600 font-bold ">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input type={`${see ? 'text' : 'password'}`}
+                            name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                         <div className="flex justify-end text-xs dark:text-gray-600">
-                            
+                            <span onClick={() => { setSee(!see) }} className={' relative -top-7 -right-72 md:-right-[350px]'}>
+                                {see ? <FaEyeSlash /> : <FaEye />}
+                                </span>
                         </div>
                     </div>
                     <Button className="mt-6" fullWidth type="submit">
