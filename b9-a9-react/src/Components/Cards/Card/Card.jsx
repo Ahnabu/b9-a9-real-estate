@@ -32,8 +32,8 @@ const SingleCard = ({ card }) => {
                         <div className="flex flex-col justify-center flex-1 p-6 dark:bg-gray-50">
                             <span className="text-xs uppercase dark:text-gray-600"></span>
                         <h3 className="text-3xl font-bold flex"><FaMapSigns className="mr-1 mt-1" /> {estate_title}</h3>
-                        <div className="mt-4 md:mt-6 ">
-                            <span className="uppercase font-semibold mb-2 p-2 border border-gray-800 rounded-lg mr-4 lg:mr-6"> For: {status}</span>
+                        <div className="mt-4 md:mt-6 flex  flex-wrap ">
+                            <span className="uppercase font-semibold mb-2 p-2 border border-gray-800  flex-wrap rounded-lg mr-4 lg:mr-6"> For: {status}</span>
                             <span className="uppercase font-semibold mb-2 p-2  border border-gray-800 rounded-lg mr-4 lg:mr-6"> Price: {price}</span>
                             <span className="uppercase font-semibold mb-2 p-2  border border-gray-800 rounded-lg mr-4 lg:mr-6"> Area: {area}</span>
                             
@@ -46,7 +46,7 @@ const SingleCard = ({ card }) => {
                             { description }
                              </p>
                         <NavLink to={`/card-details/${id}`}>
-                            <Button size="lg" className="w-1/3">View Details
+                            <Button size="lg" className="md:w-1/3">View Details
                             </Button>
                         </NavLink>
                         </div>

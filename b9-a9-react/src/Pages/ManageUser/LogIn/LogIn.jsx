@@ -34,7 +34,7 @@ function LogIn() {
             });
 
     }
-  
+  console.log(location);
 
     return (
         <div className="w-full mx-auto mt-6 ">

@@ -2,16 +2,23 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/Provider";
 import { useLocation, Navigate } from 'react-router-dom';
-
+import { Spinner } from "@material-tailwind/react";
 const PrivetRoute = ({ children }) => {
-    const { user } = useContext(AuthContext)
+    const { user,loading } = useContext(AuthContext)
     const location = useLocation();
-    // console.log(location);
+    
+    const form = location?.pathname || '/'
+    if (loading) {
+        return <div className="w-full items-center text-center">
+            <Spinner className="h-16 w-16 text-gray-900/50 text-center" />
+            </div>
+    }
     if (!user) {
-        return <Navigate to={'/login'} state={location?.pathname || '/'}></Navigate>
+        return <Navigate to={'/login'} state={form}></Navigate>
       
         
     }
+  
     return (
         <div>
             {children}

@@ -11,6 +11,7 @@ const Methods = () => {
             .then(result => {
                 if (result.user) {
                     navigate(location?.state || '/')
+                    console.log(location);
                 }
             })
             .catch(error => console.log(error))
@@ -18,7 +19,7 @@ const Methods = () => {
     const handleGoogle = () => {
         UserMethod(googleSingIn);
 
-        console.log('google');
+       
     }
     const handleGithub = () => {
         UserMethod(githubSingIn)

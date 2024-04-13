@@ -12,11 +12,12 @@ export const AuthContext = createContext(null)
 const Provider = ({ children }) => {
    
     const [user, setUser] = useState(null);
-    // const [loading, setLoading] = useState(true);
-  
-    const EmailSingIn =(email, password) => {
+    const [loading, setLoading] = useState(true);
+
+    const EmailSingIn = (email, password) => {
+        
       
-     
+        setLoading(true);
             return createUserWithEmailAndPassword(auth, email, password);
            
            
@@ -24,12 +25,14 @@ const Provider = ({ children }) => {
     }
     const provider = new GoogleAuthProvider();
     const googleSingIn = () => {
+        setLoading(true);
         return signInWithPopup( auth,provider)
     }
 
     const gitProvider = new GithubAuthProvider();
 
     const githubSingIn = () => {
+        setLoading(true);
         return signInWithPopup(auth, gitProvider)
     }
 
@@ -37,6 +40,7 @@ const Provider = ({ children }) => {
   
     const LogInEmail = async (email, password) => {
         try {
+            setLoading(true);
             const result = await signInWithEmailAndPassword(email, password);
             setUser(result.user);
         } catch (error) {
@@ -44,10 +48,12 @@ const Provider = ({ children }) => {
         }
     }
     const ProfileUpdate = (name, photoURL) => {
+        
         return updateProfile(auth.currentUser, {
             displayName: `${name}`, photoURL: `${photoURL}`
-        }).then(result=>console.log(result))
-            .catch((error)=>{console.log(error)} );
+        })
+            // .then(result => console.log(result.user))
+            // .catch((error)=>{console.log(error)} );
     }
     const LogOut = () => {
         signOut(auth)
@@ -57,14 +63,15 @@ const Provider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('on auth state changed', currentUser);
-            setUser(currentUser)
+            setUser(currentUser);
+            setLoading(false);
 
         })
         return () => {
             unSubscribe()
         }
-    })
-console.log(user);
+    },[])
+
     const info = {
         user,
    
@@ -76,6 +83,7 @@ console.log(user);
      
         LogInEmail,
         ProfileUpdate,
+        loading
 
     }
     

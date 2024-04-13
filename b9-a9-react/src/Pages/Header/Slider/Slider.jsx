@@ -42,7 +42,7 @@ function Slider() {
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
                 onAutoplayTimeLeft={onAutoplayTimeLeft}
-                className="mySwiper  mt-2 rounded-3xl h-[300px] w-[370px] md:h-[500px] md:w-[720px] lg:h-[600px] lg:w-[1180px] mx-auto "
+                className="mySwiper  mt-2 rounded-3xl h-[390px] w-[370px] md:h-[500px] md:w-[720px] lg:h-[600px] lg:w-[1180px] mx-auto "
             >
 
 
