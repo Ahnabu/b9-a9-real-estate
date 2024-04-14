@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider";
-
+import toast, { Toaster } from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 const Methods = () => {
     const {  googleSingIn, githubSingIn } = useContext(AuthContext);
@@ -9,12 +9,17 @@ const Methods = () => {
     const UserMethod = signInMethod => {
         signInMethod()
             .then(result => {
+                toast.success('successfully logged in')
                 if (result.user) {
                     navigate(location?.state || '/')
-                    console.log(location);
+                    
                 }
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                toast(error.message)
+                console.log(error)
+            
+            })
     }
     const handleGoogle = () => {
         UserMethod(googleSingIn);
@@ -47,7 +52,7 @@ const Methods = () => {
                     </svg>
                     <p>Login with GitHub</p>
                 </button>
-
+                <Toaster />
             </div>
         </div>
     );

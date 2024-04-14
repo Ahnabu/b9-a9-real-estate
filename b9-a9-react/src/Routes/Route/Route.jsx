@@ -9,6 +9,7 @@ import Register from "../../Pages/ManageUser/Register/Register";
 import Cards from "../../Components/Cards/Cards";
 import CardDetails from "../../Components/Cards/Card/CardDetails/CardDetails";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import WishList from "../../Components/WishList/WishList";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +53,12 @@ export const router = createBrowserRouter([
                 path: "/card-details/:id",
                 element:<PrivetRoute>
                     <CardDetails></CardDetails>
+                </PrivetRoute> ,
+            },
+            {
+                path: "/favorite",
+                element:<PrivetRoute>
+                    <WishList></WishList>
                 </PrivetRoute> ,
             },
           

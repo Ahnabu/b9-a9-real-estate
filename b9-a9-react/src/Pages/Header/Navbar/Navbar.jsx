@@ -60,18 +60,18 @@ export function StickyNavbar() {
                     User Profile
                 </NavLink>
             </Typography>
-            {/* <Typography
+            <Typography
                 as="li"
                 variant="small"
                 color="text-black"
                 className="p-1 font-normal"
             >
-                <NavLink to={'/'} className={({ isActive, isPending }) =>
+                <NavLink to={'/favorite'} className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? " p-2 underline font-bold text-blue-gray" : "text-black"
                 } >
-                    Home
+                    Favorite
                 </NavLink> 
-             </Typography> */}
+             </Typography>
         </ul>
     );
 

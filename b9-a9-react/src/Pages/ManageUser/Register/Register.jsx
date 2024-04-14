@@ -17,7 +17,7 @@ import { FaEyeSlash } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { useLocation, useNavigate } from 'react-router-dom';
 
-
+import toast, { Toaster } from 'react-hot-toast';
 function Register() {
     const { EmailSingIn, ProfileUpdate } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -63,13 +63,17 @@ function Register() {
             
             
             .then(result => {
+toast.success('successfully logged in')
                 ProfileUpdate(name, photoURL)
                     .then(() => {
                         if (result.user) {
                             navigate(location?.state || '/')
                         }
                 })
-                
+                    .catch(error => {
+                        console.log(error)
+                        toast.error(error.message)
+                    })   
         })
 
     }
@@ -150,6 +154,7 @@ function Register() {
                         
                         {error && <p style={{ color: 'red' }}>{error}</p>}
                     </div>
+                    <Toaster />
                     <Checkbox
                         label={
                             <Typography

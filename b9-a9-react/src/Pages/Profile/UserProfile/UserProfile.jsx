@@ -8,7 +8,7 @@ const UserProfile = () => {
     const{user}= useContext(AuthContext)
     return (
         <div className="my-6">
-            <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-gray-700 mx-auto text-white">
+            <div className="flex flex-col justify-center max-w-xs p-6  rounded-xl sm:px-12 bg-gray-700 mx-auto text-white">
                 {user?.photoURL ? <div className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square" style={{ backgroundImage: `url(${user.photoURL})` }} ></div> : <FaCircleUser className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square" />}
                 <div className="space-y-4 text-center divide-y dark:divide-gray-300">
                     <div className="my-2 space-y-1">

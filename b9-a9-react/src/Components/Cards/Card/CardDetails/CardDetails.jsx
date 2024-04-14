@@ -31,7 +31,7 @@ const CardDetails = () => {
               
                 <div className="flex flex-col max-w-[100vw] h-[80vh] mx-auto  rounded bg-no-repeat bg-cover" style={{backgroundImage :`url(${image})`}} >
                   
-                    <div className="p-8 pb-6 m-4 space-y-6 lg:w-[70vw]sm:px-10 sm:mx-12 lg:rounded-md  bg-[#ffffffcc] bg-blur bg-shadow-lg mx-auto text-center relative top-[400px] ">
+                    <div className="p-8 pb-6 m-4 space-y-6 lg:w-[70vw]sm:px-10 sm:mx-12 lg:rounded-md  bg-[#ffffffcc] bg-blur  mx-auto text-center relative top-[400px] ">
                         <h1 rel="noopener noreferrer" href="#" className="inline-block text-2xl font-semibold sm:text-3xl text-gray-800 text-center mx-auto animate__animated animate__bounce animate__delay-2s" >{estate_title} </h1>
                         <div className=" flex justify-around w-[70vw] mx-auto text-gray-800">
 

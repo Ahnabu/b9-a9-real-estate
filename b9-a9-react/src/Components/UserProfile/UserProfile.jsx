@@ -7,7 +7,7 @@ import {
     Button,
    
 } from "@material-tailwind/react";
-
+import toast, { Toaster } from 'react-hot-toast';
 import { FaCircleUser } from "react-icons/fa6";
 
 import { Link } from "react-router-dom";
@@ -25,31 +25,36 @@ const UserProfile = () => {
     };
     const openDrawer = () => setOpen(true);
     const closeDrawer = () => setOpen(false);
+    const handleLogOut = () => {
+        LogOut();
+        toast.success("Logged out successfully");
+    };
     return (
         <div>
             <React.Fragment>
-                <div>
-                <Button onClick={openDrawer} className="w-12 h-12 rounded-full  dark:bg-gray-500 p-1" onMouseOver={() => handleMouseOver(`${user.displayName}`)} onMouseLeave={handleMouseLeave}>
+                <div className="flex">
+                <Button onClick={openDrawer} className={`w-12 h-12 rounded-full  dark:bg-gray-500 p-1 `} onMouseOver={() => handleMouseOver(`${user.displayName}`)} onMouseLeave={handleMouseLeave}>
                     
                     {user?.photoURL ?  <div className="w-12 h-12 rounded-full bg-cover -mt-[5px] -ml-[5px] " style={{ backgroundImage: `url(${user.photoURL})` }} ></div> : <FaCircleUser className="text-5xl -mt-[5.5px] -ml-[5px]" />}
                     
                     </Button>
                     {hoverText && <span style={{ position: 'absolute', backgroundColor: 'lightgray', padding: '5px' }}>{hoverText}</span>}
-                    <Button onClick={LogOut} className="ml-4">Log Out</Button>
+                    <Button onClick={handleLogOut} className="ml-4 hidden md:block">Log Out</Button>
                 </div>
-                <Drawer open={open} onClose={closeDrawer} className="p-4 bg-white ">
+                <Toaster/>
+                <Drawer open={open} onClose={closeDrawer} className={`p-4 bg-gray-400 w-full ${open ? 'block' : 'hidden'}`}>
                     <div className="h-full p-3 space-y-2 w-60 bg-white dark:text-gray-800  ">
                         <div className="flex items-center p-2 space-x-4">
 
                             <div className="flex">
                                 <h2 className="text-lg font-semibold  mr-3">{user.displayName}</h2>
                                 <span className="flex items-center space-x-1 mr-3 ">
-                                    {user?.photoURL ? <div className="w-12 h-12 rounded-full bg-cover" style={{ backgroundImage: `url(${user.photoURL})` }} ></div> : <FaCircleUser className="text-5xl -mt-[14px] " />}
+                                    {user?.photoURL ? <div className="w-12 h-12 rounded-full items-center bg-cover -mt-[14px]" style={{ backgroundImage: `url(${user.photoURL})` }} ></div> : <FaCircleUser className="text-5xl -mt-[14px] " />}
                                 </span>
                             </div>
                         </div>
                         <ul role="menu" data-popover="profile-menu" data-popover-placement="bottom"
-                            className="absolute z-10 flex min-w-[180px] flex-col gap-2 overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none">
+                            className="absolute z-10 flex min-w-[180px] flex-col gap-2 overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 font-sans text-sm font-normal text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none">
                             <button role="menuitem"
                                 className="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-2 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
-
+import toast, { Toaster } from 'react-hot-toast';
 export const AuthContext = createContext(null)
 
 
@@ -37,6 +37,7 @@ const Provider = ({ children }) => {
             const result = await signInWithEmailAndPassword(email, password);
             setUser(result.user);
         } catch (error) {
+            toast.error(error.message)
             return console.log(error);
         }
     }
@@ -50,9 +51,16 @@ const Provider = ({ children }) => {
     }
     const LogOut = () => {
         signOut(auth)
-            .then(setUser(null))
-        .catch(error=>console.log(error))
+            .then(() => {
+                setUser(null)
+                toast.success('successfully logged out')
+            })
+                
+            .catch(error => console.log(error));
+        
+        
     }
+    <Toaster />
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('on auth state changed', currentUser);
@@ -64,7 +72,25 @@ const Provider = ({ children }) => {
             unSubscribe()
         }
     }, []);
-    
+    const getWishList = () => {
+        const storedBooks = localStorage.getItem('wish-list');
+
+        return (JSON.parse(storedBooks) || [])
+    }
+
+    const wishList = id => {
+
+        const readBooks = getWishList()
+        const exist = readBooks.find(bookId => bookId == id);
+        if (!exist) {
+            readBooks.push(id);
+            localStorage.setItem('wish-list', JSON.stringify(readBooks));
+            toast.success('Successfully added to wishlist')
+        }
+        else {
+            localStorage.removeItem('wish-list', JSON.stringify(readBooks))
+        }
+    }
 
     const info = {
         user,
@@ -75,7 +101,9 @@ const Provider = ({ children }) => {
         LogOut,
         LogInEmail,
         ProfileUpdate,
-        loading
+        loading,
+        wishList,
+        getWishList
 
     }
     
