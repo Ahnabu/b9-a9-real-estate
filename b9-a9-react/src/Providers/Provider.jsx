@@ -37,7 +37,7 @@ const Provider = ({ children }) => {
             const result = await signInWithEmailAndPassword(email, password);
             setUser(result.user);
         } catch (error) {
-            toast.error(error.message)
+            toast.error('something went wrong')
             return console.log(error);
         }
     }

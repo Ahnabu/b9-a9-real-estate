@@ -55,9 +55,10 @@ function LogIn() {
                         <input type={`${see ? 'text' : 'password'}`}
                             name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                         <div className="flex justify-end text-xs dark:text-gray-600">
-                            <span onClick={() => { setSee(!see) }} className={' relative -top-7 -right-72 md:-right-[350px]'}>
+                         
+                            <span onClick={() => { setSee(!see) }} className={' relative -top-7  right-3 md:right-6'}>
                                 {see ? <FaEyeSlash /> : <FaEye />}
-                                </span>
+                            </span>
                         </div>
                     </div>
                     <Button className="mt-6" fullWidth type="submit">

@@ -1,7 +1,7 @@
 import { Button } from "@material-tailwind/react";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/Provider";
-
+import Swal from 'sweetalert2'
 
 const UpdateProfile = () => {
     const { ProfileUpdate } = useContext(AuthContext);
@@ -17,7 +17,11 @@ const UpdateProfile = () => {
 
 
         ProfileUpdate(name, photoURL)
-           
+        Swal.fire({
+            title: "Good job!",
+            text: "You updated your profile! Reload the page to see changes.",
+            icon: "success"
+        });
 
     }
     return (

@@ -13,7 +13,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/Provider";
-import { Tooltip } from 'react-tooltip';
+
 // ..
 AOS.init();
 const SingleCard = ({ card }) => {

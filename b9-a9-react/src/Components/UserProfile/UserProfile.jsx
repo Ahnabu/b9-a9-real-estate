@@ -41,7 +41,8 @@ const UserProfile = () => {
                     {hoverText && <span style={{ position: 'absolute', backgroundColor: 'lightgray', padding: '5px' }}>{hoverText}</span>}
                     <Button onClick={handleLogOut} className="ml-4 hidden md:block">Log Out</Button>
                 </div>
-                <Toaster/>
+                <Toaster
+                    position="top-right" />
                 <Drawer open={open} onClose={closeDrawer} className={`p-4 bg-gray-400 w-full ${open ? 'block' : 'hidden'}`}>
                     <div className="h-full p-3 space-y-2 w-60 bg-white dark:text-gray-800  ">
                         <div className="flex items-center p-2 space-x-4">
