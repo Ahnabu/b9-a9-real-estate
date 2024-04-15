@@ -1,5 +1,5 @@
 <h1>Dwell-well</h1>
-<h3>5 fetaure and characteristics of  my website  </h3>
+<h3>Fetaure and characteristics of  my website  </h3>
 <p>live link <a href="https://b9-a9-9ccf9.web.app/" target="blank"> click here</a> </p>
 <ul>
   <li>It  has amimated card, which makes it attractive</li>
