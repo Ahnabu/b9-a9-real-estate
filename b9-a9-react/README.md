@@ -1,8 +1,18 @@
-# React + Vite
+# Dwell-well
+---
+**live link** [click here](https://b9-a9-9ccf9.web.app/)
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Fetaure and characteristics of my website
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. It has animated card, which makes it attractive
+2. You can save your favorite items for letter
+3. Has privet route, which protect confidential data
+4. You can login with google and github
+5. You can edit your profile any time you want
+6. Responsive for mobile, tablet and pc
+### npm package used for challenging part
+1. [AOS](https://www.npmjs.com/package/aos)
+2. [Animate css](https://animate.style/)
+3. [Swiper Slider](https://swiperjs.com/)
