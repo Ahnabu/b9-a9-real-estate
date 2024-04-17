@@ -6,20 +6,20 @@ import Swal from 'sweetalert2'
 const UpdateProfile = () => {
     const { ProfileUpdate } = useContext(AuthContext);
     const handleUpdate = e => {
-        e.preventDefault();
+        // e.preventDefault();
 
         const form = new FormData(e.currentTarget);
-        const email = form.get('email');
+       
         const name = form.get('name');
         const photoURL = form.get('photoURL');
-        const password = form.get('password');
-        console.log(email, password, name, photoURL);
+       
+        console.log( name, photoURL);
 
 
         ProfileUpdate(name, photoURL)
         Swal.fire({
             title: "Good job!",
-            text: "You updated your profile! Reload the page to see changes.",
+            text: "You updated your profile!",
             icon: "success"
         });
 
